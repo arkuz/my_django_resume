@@ -50,3 +50,22 @@ class MoreContacts(models.Model):
     class Meta:
         verbose_name_plural = 'Дополнительные контакты'
         verbose_name = 'Дополнительный контакт'
+
+
+class Works(models.Model):
+    is_active = models.BooleanField(verbose_name='Активна?')
+    company = models.CharField(max_length=150, blank=True, verbose_name='Компания')
+    position = models.CharField(max_length=200, blank=True, verbose_name='Позиция')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    period = models.CharField(max_length=250, blank=True, verbose_name='Период работы')
+    resume = models.ForeignKey('Resume', null=True, on_delete=models.PROTECT, verbose_name='Резюме')
+
+    def __repr__(self):
+        return f'Works: {self.company} - {self.position}'
+
+    def __str__(self):
+        return f'{self.company} - {self.position}'
+
+    class Meta:
+        verbose_name_plural = 'Места работы'
+        verbose_name = 'Место работы'

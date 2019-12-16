@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Resume, MoreContacts
+from .models import Resume, MoreContacts, Works
 
 
 class MoreContactsInLine(admin.TabularInline):
@@ -15,9 +15,28 @@ class MoreContactsInLine(admin.TabularInline):
         'title',
     ]
 
+
+class WorksInLine(admin.TabularInline):
+    model = Works
+
+    list_display = [
+        'company',
+        'position',
+    ]
+    list_display_links = [
+        'company',
+        'position',
+    ]
+    search_fields = [
+        'company',
+        'position',
+    ]
+
+
 class ResumeAdmin(admin.ModelAdmin):
     inlines = [
         MoreContactsInLine,
+        WorksInLine,
     ]
 
     list_display = [
@@ -41,4 +60,3 @@ class ResumeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Resume, ResumeAdmin)
-#admin.site.register(MoreContacts, MoreContactsInLine)
