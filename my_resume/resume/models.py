@@ -69,3 +69,22 @@ class Works(models.Model):
     class Meta:
         verbose_name_plural = 'Места работы'
         verbose_name = 'Место работы'
+
+
+class Educations(models.Model):
+    is_active = models.BooleanField(verbose_name='Активна?')
+    univercity = models.CharField(max_length=200, blank=True, verbose_name='Учебное заведение')
+    faculy = models.CharField(max_length=200, blank=True, verbose_name='Факультет')
+    qualification = models.CharField(max_length=200, blank=True, verbose_name='Квалификация')
+    period = models.CharField(max_length=250, blank=True, verbose_name='Период обучения')
+    resume = models.ForeignKey('Resume', null=True, on_delete=models.PROTECT, verbose_name='Резюме')
+
+    def __repr__(self):
+        return f'Educations: {self.univercity} - {self.faculy}'
+
+    def __str__(self):
+        return f'{self.univercity} - {self.faculy}'
+
+    class Meta:
+        verbose_name_plural = 'Места учебы'
+        verbose_name = 'Место учебы'

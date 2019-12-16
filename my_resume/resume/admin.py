@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Resume, MoreContacts, Works
+from .models import Resume, MoreContacts, Works, Educations
 
 
 class MoreContactsInLine(admin.TabularInline):
@@ -33,10 +33,28 @@ class WorksInLine(admin.TabularInline):
     ]
 
 
+class EducationsInLine(admin.TabularInline):
+    model = Educations
+
+    list_display = [
+        'univercity',
+        'faculty',
+    ]
+    list_display_links = [
+        'univercity',
+        'faculty',
+    ]
+    search_fields = [
+        'univercity',
+        'faculty',
+    ]
+
+
 class ResumeAdmin(admin.ModelAdmin):
     inlines = [
         MoreContactsInLine,
         WorksInLine,
+        EducationsInLine,
     ]
 
     list_display = [
