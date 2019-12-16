@@ -7,26 +7,35 @@
             <span class="text-primary">{{ resume.firstname }}</span>
             {{ resume.patronomic }}
         </h2>
-        <div class="subheading mb-5">3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
-            <a href="mailto:name@email.com">name@email.com</a>
+        {% if resume.position %}
+        <div class="subheading mb-2" style="font-size:35px;">
+            {{ resume.position }}
         </div>
-        <p class="lead mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level
-            overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall
-            value proposition.</p>
-        <div class="social-icons">
-            <a href="#">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-facebook-f"></i>
-            </a>
+        {% endif %}
+        <div class="mb-5">
+            {{ resume.birthday }} <!--({{ resume.age }})--> ·
+            {% if resume.position %}
+                {{ resume.address }} ·
+            {% endif %}
+            &nbsp;{{ resume.phone }}&nbsp;·
+            <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
         </div>
+        {% if resume.about %}
+            <p class="lead mb-5">
+                {{ resume.about }}
+            </p>
+        {% endif %}
+
+        {% if more_contacts %}
+            <div class="social-icons">
+            {% for contact in more_contacts%}
+                <a href="{{ contact.link }}" target="_blank">
+                    <i class="{{ contact.icon_class }}" title="{{ contact.title }}">{{ contact.i_text }}</i>
+                </a>
+            {% endfor %}
+            </div>
+        {% endif %}
+
     </div>
 </section>
 
