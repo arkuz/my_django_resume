@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/arkuz/my_django_resume.svg?branch=master)](https://travis-ci.org/arkuz/my_django_resume)
 #### Описание
 Данный проект представляет собой сайт резюме с админкой, в которой можно управлять сведениями кандидата: контакты, образование, опыт работы, курсы повышения квалификации. Проект выполнен на `Django` + `Bootsrap`.
 
