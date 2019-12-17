@@ -34,4 +34,3 @@ def index(request):
     }
 
     return render(request, 'resume/index.html', context=context)
-
