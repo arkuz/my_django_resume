@@ -2,17 +2,20 @@
 
 <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
     <div class="w-100">
-        <h3 class="mb-5">Курсы</h3>
-        {% if educations %}
-            {% for education in educations %}
+        <h2 class="mb-5">Курсы</h2>
+        {% if courses %}
+            {% for course in courses %}
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
-                        <h4 class="mb-0">{{ education.univercity }}</h4>
-                        <div class="subheading mb-3">{{ education.faculy }}</div>
-                        <p>Присуждена квалификация: {{ education.qualification }}</p>
+                        <h4 class="mb-0">{{ course.title }}</h4>
+                        <div class="subheading mb-2">{{ course.organization }}</div>
+                        <p>
+                            <a href="{{ course.link }}" target="_blank">{{ course.link }}</a>
+                        </p>
+                        <p>{{ course.description }}</p>
                     </div>
                     <div class="resume-date text-md-right">
-                        <span class="text-primary">{{ education.period }}</span>
+                        <span class="text-primary">{{ course.period }}</span>
                     </div>
                 </div>
             {% endfor %}
