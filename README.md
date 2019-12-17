@@ -21,6 +21,8 @@ pip install -r requirements.txt
 ```
 
 #### Создание базы данных
+База данных по умолчанию - `sqlite3`.
+
 Перейти в папку с файлом менеджера Django `../cd my_django_resume/my_resume/manage.py` и выполнить команды:
 ```bash
 manage.py makemigrations resume
