@@ -88,3 +88,56 @@ class Educations(models.Model):
     class Meta:
         verbose_name_plural = 'Места учебы'
         verbose_name = 'Место учебы'
+
+
+class Skills(models.Model):
+    is_active = models.BooleanField(verbose_name='Активна?')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    resume = models.ForeignKey('Resume', null=True, on_delete=models.PROTECT, verbose_name='Резюме')
+
+    def __repr__(self):
+        return f'Skills: {self.description}'
+
+    def __str__(self):
+        return f'{self.description}'
+
+    class Meta:
+        verbose_name_plural = 'Навыки'
+        verbose_name = 'Навык'
+
+
+class SkillsIcon(models.Model):
+    is_active = models.BooleanField(verbose_name='Активна?')
+    title = models.CharField(max_length=100, blank=True, verbose_name='Название')
+    icon_class = models.CharField(max_length=100, blank=True, verbose_name='Класс для иконки')
+    resume = models.ForeignKey('Resume', null=True, on_delete=models.PROTECT, verbose_name='Резюме')
+
+    def __repr__(self):
+        return f'SkillsIcon: {self.title}'
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name_plural = 'Иконки навыков'
+        verbose_name = 'Иконка навыка'
+
+
+class Courses(models.Model):
+    is_active = models.BooleanField(verbose_name='Активна?')
+    organization = models.CharField(max_length=200, blank=True, verbose_name='Организация проводившая курсы')
+    title = models.CharField(max_length=200, blank=True, verbose_name='Название курса')
+    link = models.CharField(max_length=200, blank=True, verbose_name='Ссылка')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    period = models.CharField(max_length=250, blank=True, verbose_name='Период обучения')
+    resume = models.ForeignKey('Resume', null=True, on_delete=models.PROTECT, verbose_name='Резюме')
+
+    def __repr__(self):
+        return f'Courses: {self.organization} - {self.title}'
+
+    def __str__(self):
+        return f'{self.organization} - {self.title}'
+
+    class Meta:
+        verbose_name_plural = 'Курсы'
+        verbose_name = 'Курс'
